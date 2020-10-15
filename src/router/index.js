@@ -7,7 +7,28 @@ import About from '../views/About/About.vue'
 import Register from '../views/Register/Register.vue'
 import Login from '../views/Login/Login.vue'
 
+
+
+
+
+//import HelloWorld from '@/components/HelloWorld'
+const originalPush = VueRouter.prototype.push
+   VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
+
+
+
+
+
 Vue.use(VueRouter)
+
+
+
+
+
+
+
 
 const routes = [
   {

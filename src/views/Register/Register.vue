@@ -1,22 +1,33 @@
 <template>
   <div class="main">
-    <cube-form :model="model" @submit="submitHandler">
-      <cube-form-group>
-        <!--名称-->
-        <cube-form-item :field="fields[0]"></cube-form-item>
-        <!--手机号-->
-        <cube-form-item :field="fields[1]"></cube-form-item>
-        <!--密码-->
-        <cube-form-item :field="fields[2]"></cube-form-item>
-        <!--确认密码-->
-        <cube-form-item :field="fields[3]"></cube-form-item>
-      </cube-form-group>
+    <!-- //返回按钮 -->
+    <div class="back">
+      <router-link to="/Personal" class="reg">
+        <cube-button icon="cubeic-back" inline>返回</cube-button>
+      </router-link>
+    </div>
+    <!-- //注册框 -->
+    <div>
+      <cube-form :model="model" @submit="submitHandler">
+        <cube-form-group>
+          <!--名称-->
+          <cube-form-item :field="fields[0]"></cube-form-item>
+          <!--手机号-->
+          <cube-form-item :field="fields[1]"></cube-form-item>
+          <!--密码-->
+          <cube-form-item :field="fields[2]"></cube-form-item>
+          <!--确认密码-->
+          <cube-form-item :field="fields[3]"></cube-form-item>
+          <!-- 家庭号 -->
+          <cube-form-item :field="fields[4]"></cube-form-item>
+        </cube-form-group>
 
-      <cube-form-group>
-        <cube-button type="submit">注册</cube-button>
-      </cube-form-group>
-    </cube-form>
-    <router-link to="/login" class="reg">登录</router-link>
+        <cube-form-group>
+          <cube-button type="submit">注册</cube-button>
+        </cube-form-group>
+      </cube-form>
+      <router-link to="/login" class="reg">登录</router-link>
+    </div>
   </div>
 </template>
 
@@ -100,6 +111,22 @@ export default {
             required: "请再次输入密码！",
           },
         },
+        {
+          type: "input",
+          modelKey: "familyId",
+          label: "家庭号",
+          props: {
+            placeholder: "请输入家庭号",
+            type: "text",
+          },
+          rules: {
+            //设置为必填
+            required: true,
+          },
+          messages: {
+            required: "家庭号不能为空！",
+          },
+        }
       ],
     };
   },
@@ -107,16 +134,17 @@ export default {
     submitHandler(e, model) {
       //防止默认提交
       e.preventDefault();
-    //   function checked() {
-    //     if (mode.pwdFirst !== mode.pwdSecond) {
-    //       const toast = this.$createToast({
-    //         type: "warn",
-    //         text: "两次密码填写不一致！",
-    //         time: "1500",
-    //       });
-    //       toast.show();
-    //       return;
-    //     } else//如果密码填写一致
+      function checked() {
+        if (mode.pwdFirst !== mode.pwdSecond) {
+          const toast = this.$createToast({
+            type: "warn",
+            text: "两次密码填写不一致！",
+            time: "1500",
+          });
+          toast.show();
+          return;
+        } //如果密码填写一致
+        else
           registerApi(model.nameValue, model.telValue, model.pwdFirst).then(
             (res) => {
               if (res.data.code === 0) {
@@ -130,7 +158,7 @@ export default {
               }
             }
           );
-    //   }
+      }
       //调用注册接口
     },
   },
@@ -142,6 +170,9 @@ export default {
 .main {
   padding: 50px 5% 0;
   text-align: center;
+}
+.back{
+  margin-right:95%;
 }
 //注册
 .cube-btn {

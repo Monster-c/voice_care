@@ -36,7 +36,7 @@ export default {
         {
           label: "我",
           icon: "cubeic-person",
-          path: "/Login",
+          path: "/Personal",
         },
       ],
     };
