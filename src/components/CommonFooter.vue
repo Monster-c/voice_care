@@ -42,7 +42,7 @@ export default {
     };
   },
   methods: {
-    clickHandler: function (path) {
+    clickHandler(path) {
       if (path !== this.$router.path) {
         this.$router.push(path);
       }
@@ -69,6 +69,6 @@ export default {
   border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
 }
 .cube-tab_active {
-  color: #3bb149;
+  color: #ffc148;
 }
 </style>

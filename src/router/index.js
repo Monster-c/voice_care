@@ -6,15 +6,15 @@ import Company from '../views/Company/Company.vue'
 import About from '../views/About/About.vue'
 import Register from '../views/Register/Register.vue'
 import Login from '../views/Login/Login.vue'
-
+import Custom_Tailor from '../views/Custom_Tailor/Custom_Tailor.vue'
 
 
 
 
 //import HelloWorld from '@/components/HelloWorld'
 const originalPush = VueRouter.prototype.push
-   VueRouter.prototype.push = function push(location) {
-   return originalPush.call(this, location).catch(err => err)
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
 }
 
 
@@ -30,41 +30,45 @@ Vue.use(VueRouter)
 
 
 
-const routes = [
-  {
-    path: '/',
-    name: 'HomePage',
-    component: HomePage
-  },
-  {
-    path: '/Personal',
-    name: 'Personal',
-    component: Personal
-  },
-  {
-    path: '/Company',
-    name: 'Company',
-    component: Company
-  },
-  {
-    path: '/About',
-    name: 'About',
-    component: About
-  },
-  {
-    path:'/Register',
-    name:"Register",
-    component:Register
-  },
-  {
-    path:'/Login',
-    name:'Login',
-    component:Login
-  }
+const routes = [{
+        path: '/',
+        name: 'HomePage',
+        component: HomePage
+    },
+    {
+        path: '/Personal',
+        name: 'Personal',
+        component: Personal
+    },
+    {
+        path: '/Company',
+        name: 'Company',
+        component: Company
+    },
+    {
+        path: '/About',
+        name: 'About',
+        component: About
+    },
+    {
+        path: '/Register',
+        name: "Register",
+        component: Register
+    },
+    {
+        path: '/Login',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/Custom_Tailor',
+        name: 'Custom_Tailor',
+        component: Custom_Tailor
+    }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 //导出包

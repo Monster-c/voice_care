@@ -15,7 +15,6 @@
             <!--密码-->
             <cube-form-item :field="fields[1]"></cube-form-item>
           </cube-form-group>
-
           <cube-form-group>
             <cube-button type="submit">登录</cube-button>
           </cube-form-group>
@@ -25,7 +24,6 @@
     </div>
   </div>
 </template>
-
 
 
 <script>
@@ -98,8 +96,8 @@ export default {
         }
       });
       //调用注册接口
-    },
-  },
+    }
+  }
 };
 </script>
 

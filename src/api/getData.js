@@ -1,15 +1,15 @@
 import axios from '../request'
 
 //注册接口
-export const registerApi = (name, tel, pwd) => axios.post('/api/v1/pri/user/register', {
+export const registerApi = (name, phone, pwd) => axios.post('/api/v1/pri/user/register', {
     name,
     tel,
     pwd
 })
 
 //登录接口
-export const loginApi = (tel, pwd) => axios.post('/api/v1/pri/user/login', {
-    tel,
+export const loginApi = (phone, pwd) => axios.post('/api/v1/pri/user/login', {
+    phone,
     pwd
 })
 

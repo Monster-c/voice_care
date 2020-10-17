@@ -1,14 +1,17 @@
 <template>
   <div>
     <home-member></home-member>
-    <common-footer></common-footer>
+    <div></div>
+    <div>
+      <common-footer></common-footer>
+    </div>
   </div>
 </template>
 
 <script>
 import HomeMember from "./Component/MemberList.vue";
 import CommonFooter from "../../components/CommonFooter.vue";
-import {getMember} from "@/api/getData.js";
+import { getMember } from "@/api/getData.js";
 
 export default {
   //注册组件

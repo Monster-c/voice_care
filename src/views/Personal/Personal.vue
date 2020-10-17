@@ -26,6 +26,7 @@
 import CommonFooter from "@/components/CommonFooter.vue";
 import { getUserInfor } from "@/api/getData.js";
 import defaultHeadImg from "@/assets/logo.png";
+
 export default {
   components: {
     CommonFooter,

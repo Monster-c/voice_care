@@ -2,11 +2,18 @@
 <div>
   <div class="main">
     <div class="start">
-      <cube-button onclick="startRec()" inline>点击录音</cube-button>
+      <el-button round type="info" onclick="startRecording()" class="el-icon-mic">点击录音</el-button>
     </div>
+    <!-- 分割线 -->
+    <el-divider></el-divider>
     <div class="upload">
-      <cube-button onclick="uploadRec()" inline>点击发送语音</cube-button>
+      <el-button round type="primary">发送语音<i class="el-icon-upload el-icon--right"></i></el-button>
     </div>
+  </div>
+  <div class="chose">
+    <router-link to="/Custom_Tailor">
+    <el-button type="success" icon="el-icon-circle-plus-outline" size="medium" circle></el-button>
+    </router-link>
   </div>
   <div>
     <common-footer></common-footer>
@@ -16,6 +23,8 @@
 
 <script>
 import CommonFooter from "@/components/CommonFooter.vue";
+import {startRecording} from '@/components/AudioRecorder/static/js/app.js'
+
 export default{
   components:{
     CommonFooter
@@ -40,5 +49,9 @@ export default{
 }
 .upload {
   margin: 5px;
+}
+.chose {
+  margin-top: 90%;
+  margin-right:90%;
 }
 </style>
