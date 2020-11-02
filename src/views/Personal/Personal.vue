@@ -4,14 +4,14 @@
       <div class="p_top">
         <div>
           <img :src="infor.head_img || defaultHeadImg" alt="头像" />
-          <router-link to="/login" v-if="getToken === ''">
+          <router-link to="/Login" v-if="getToken === ''">
             <p>登录</p>
           </router-link>
           <p v-else>{{ infor.name }}</p>
         </div>
       </div>
       <div>
-        <button v-if="getToken !== ''" class="green" @click="signOut">
+        <button v-if="getToken !== ''" class="color" @click="signOut">
           退出登录
         </button>
       </div>
@@ -37,13 +37,11 @@ export default {
       defaultHeadImg: defaultHeadImg,
     };
   },
-
   computed: {
     getToken() {
       return this.$store.state.token;
     },
   },
-
   methods: {
     //获取用户信息
     async getInfor() {
@@ -75,7 +73,6 @@ export default {
 </script>
 
 
-
 <style lang="scss" scoped>
 .container {
   // 顶部头像区域
@@ -102,9 +99,9 @@ export default {
   }
 }
 // 退出登录
-.green {
+.color {
   display: block;
-  background-color: #3bb149;
+  background-color:#409eff;
   border: none;
   outline: none;
   width: 80%;

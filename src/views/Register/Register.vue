@@ -40,8 +40,9 @@ export default {
     return {
       model: {
         nameValue: "",
-        telValue: "",
-        pwdValue: "",
+        pwdFirst: "",
+        phoneValue: "",
+        familyId:""
       },
       fields: [
         {
@@ -61,7 +62,7 @@ export default {
         },
         {
           type: "input",
-          modelKey: "telValue",
+          modelKey: "phoneValue",
           label: "手机号",
           props: {
             placeholder: "请输入手机号",
@@ -134,31 +135,34 @@ export default {
     submitHandler(e, model) {
       //防止默认提交
       e.preventDefault();
-      function checked() {
-        if (mode.pwdFirst !== mode.pwdSecond) {
-          const toast = this.$createToast({
-            type: "warn",
-            text: "两次密码填写不一致！",
-            time: "1500",
-          });
-          toast.show();
-          return;
-        } //如果密码填写一致
-        else
-          registerApi(model.nameValue, model.telValue, model.pwdFirst).then(
-            (res) => {
+      // checked() {
+      //   if (mode.pwdFirst !== mode.pwdSecond) {
+      //     const toast = this.$createToast({
+      //       type: "warn",
+      //       text: "两次密码填写不一致！",
+      //       time: "1500",
+      //     });
+      //     toast.show();
+      //     return;
+      //   } //如果密码填写一致
+        // else
+          registerApi(model.nameValue,model.pwdFirst, model.phoneValue, model.familyId).then(
+            res => {
               if (res.data.code === 0) {
                 const toast = this.$createToast({
                   //生成一个toast类型的组件弹窗，提示注册成功，时间1.5s
                   type: "correct",
                   text: "注册成功！",
-                  time: "1500",
+                  time: 1500,
                 });
                 toast.show();
+                this.$router.push({path:"/Login"});
+              }else{
+                console.log("error");
               }
             }
-          );
-      }
+          )
+      // }
       //调用注册接口
     },
   },

@@ -1,10 +1,11 @@
 import axios from '../request'
 
 //注册接口
-export const registerApi = (name, phone, pwd) => axios.post('/api/v1/pri/user/register', {
+export const registerApi = (name, pwd, phone, familyId) => axios.post('/api/v1/pri/user/register', {
     name,
-    tel,
-    pwd
+    pwd,
+    phone,
+    familyId
 })
 
 //登录接口
@@ -16,16 +17,17 @@ export const loginApi = (phone, pwd) => axios.post('/api/v1/pri/user/login', {
 export const getMember = () => axios.get('api/v1/pri/user/family')
 
 //语音接口
-export const getVoice = (voice) => axios.get('/api/v1/pri/voice', {
+export const getAudio = (token) => axios.get('api/v1/pri/user/audioplay', {
     params: {
-        voiceId: voice
-    }
+        "token": token
+    },
+    responseType: "blob"
 })
 
 //获得用户信息
-export const getUserInfor = () => axios.get('api/v1/pri/user/find_by_token',{
-    params:{
-        "token":token
+export const getUserInfor = (token) => axios.get('api/v1/pri/user/find_by_token', {
+    params: {
+        "token": token
     }
 })
 

@@ -78,19 +78,20 @@ export default {
     submitHandler(e, model) {
       //防止默认提交
       e.preventDefault();
-      loginApi(model.telValue, model.pwdValue).then((res) => {
+      loginApi(model.telValue, model.pwdValue).then(
+        res => {
         if (res.data.code === 0) {
           localStorage.setItem("token", res.data.data);
 
-          this.$store.dispatch("setTOKEN", res.data.data);
+          this.$store.dispatch("setToken", res.data.data);
 
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/Personal" });
         } else {
           const toast = this.$createToast({
             //生成一个toast类型的组件弹窗，提示注册成功，时间1.5s
             type: "error",
             text: "登录失败！",
-            time: "1500",
+            time: 1500,
           });
           toast.show();
         }
