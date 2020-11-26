@@ -18,4 +18,4 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-##This is we team first project for Computer Ability Compete.
+## This is we team first project for Computer Ability Compete.
